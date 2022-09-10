@@ -1,7 +1,6 @@
 ---
 - name: Performing Kubernetes deployment
   hosts: k8s
-  become: yes
   tasks:
     - name: starting deployment
       shell: kubectl apply -f deploymentservice.yml
