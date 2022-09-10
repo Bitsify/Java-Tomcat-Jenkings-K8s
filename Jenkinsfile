@@ -4,28 +4,30 @@ pipeline {
         dockerImage = ""
     }
     agent any
+     tools {
+        maven 'Maven' 
+        }    
     stages {
         stage ('Checkout Source') {
             steps {
                 git 'https://github.com/Bitsify/Java-Tomcat-Jenkings.git'
             }
         }
+        stage("Test"){
+            steps{
+                // mvn test
+                sh "mvn test"   
+            }
+        }
+        stage("Build"){
+            steps{
+                sh "mvn package"  
+            }   
+        }
         stage('Build image') {
             steps{
                 script {
                     dockerImage = docker.build dockerimagename
-                }
-            }
-        }
-        stage('Pushing Image') {
-            environment {
-                registryCredential = 'nikkihubdockerhublogin'
-            }
-            steps{
-                script {
-                    docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-                        dockerImage.push("latest")
-                    }
                 }
             }
         }
