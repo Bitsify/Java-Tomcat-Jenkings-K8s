@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        dockerimagename = "nikkihub/nodeapp"
+        dockerimagename = "nikkihub/myapp"
         dockerImage = ""
     }
     agent any
