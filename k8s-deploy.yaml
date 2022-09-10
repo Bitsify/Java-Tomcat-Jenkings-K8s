@@ -2,5 +2,9 @@
 - name: Performing Kubernetes deployment
   hosts: k8s
   tasks:
+    - name: Copy deployment file to k8s master node
+      copy:
+        src: deploymentservice.yml
+        dest: /home/rlinux/
     - name: starting deployment
       shell: kubectl apply -f deploymentservice.yml
