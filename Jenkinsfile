@@ -42,6 +42,11 @@ pipeline {
                     }
                 }
             }
-        }            
+        }
+        stage('Deploying to Kubernetes') {
+            steps {
+                sh 'ansible-playbook k8s-deploy.yaml'
+            }
+        }
         }
     }
