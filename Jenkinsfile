@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage ('Checkout Source') {
             steps {
-                git 'https://github.com/Bitsify/Java-Tomcat-Jenkings.git'
+                git 'https://github.com/Bitsify/Java-Tomcat-Jenkings-K8s.git'
             }
         }
         stage("Test"){
